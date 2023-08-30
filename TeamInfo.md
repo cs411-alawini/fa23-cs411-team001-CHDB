@@ -6,14 +6,14 @@
 | ----------- | ---------------------- |
 | TeamID      |        Team-001        |
 | TeamName    |          CHDB          |
-| Captain     |       Chenhao Li       |
-| Captain     |    cl89@illinois.edu   |
-| Member1     |        Shixin Chen     |
-| Member1     |  shixinc2@illinois.edu |
-| Member2     |       Yifei Song       |
-| Member2     |   yifeis7@illinois.edu |
-| Member3     |       Wentao Yao       |
-| Member3     |  wentaoy4@illinois.edu |
+| Captain     |       Wentao Yao       |
+| Captain     |  wentaoy4@illinois.edu |
+| Member1     |       Chenhao Li       |
+| Member1     |    cl89@illinois.edu   |
+| Member2     |      Shixin Chen       |
+| Member2     | shixinc2@illinois.edu  |
+| Member3     |       Yifei Song       |
+| Member3     |  yifeis7@illinois.edu  |
 
 ## Project Information
 
