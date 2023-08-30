@@ -4,16 +4,16 @@
 
 |   Info      |        Description     |
 | ----------- | ---------------------- |
-| TeamID      |        Team-000        |
-| TeamName    |         sample         |
-| Captain     |       Abdu Alawini     |
-| Captain     |  alawini@illinois.edu  |
-| Member1     |        Kevin Pei       |
-| Member1     |   kevin2@illinois.edu  |
-| Member2     |    Bharati Kulkarni    |
-| Member2     |  bharati1@illinois.edu |
-| Member3     |                        |
-| Member3     |                        |
+| TeamID      |        Team-001        |
+| TeamName    |          CHDB          |
+| Captain     |       Chenhao Li       |
+| Captain     |    cl89@illinois.edu   |
+| Member1     |        Shixin Chen     |
+| Member1     |  shixinc2@illinois.edu |
+| Member2     |       Yifei Song       |
+| Member2     |   yifeis7@illinois.edu |
+| Member3     |       Wentao Yao       |
+| Member3     |  wentaoy4@illinois.edu |
 
 ## Project Information
 
