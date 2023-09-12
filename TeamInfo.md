@@ -24,5 +24,6 @@
 | Video Link  |      link_to_video     |
 
 ## Project Summary
+The YouTube algorithm, which we are most familiar with, is the recommendation algorithm. Its target is customers and to help them quickly find the most popular video and their favorite video.  However, we rarely see recommendation algorithms for big data and large groups of people, such as analyzing the popularity of videos in different regions. This algorithm can more objectively help video creators provide video content that is more attractive to customers. Based on the user recommendation algorithm, our project hopes to fill this gap. 
+At the same time, in view of the rapid changes in data, we believe that data analysis should be done in real-time. Therefore, we implement real-time data visualization features, and customers can Create, Read, Update, and Delete data entries directly.
 
-This is a summary of the project!
