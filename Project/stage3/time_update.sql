@@ -23,3 +23,4 @@ SET
         ORDER BY vi.Dislikes DESC
         LIMIT 1
     );
+    SET SQL_SAFE_UPDATES = 1;
