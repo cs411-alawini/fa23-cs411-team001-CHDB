@@ -1,24 +1,4 @@
-use youtube; 
--- CREATE TABLE Channels (
---    Channel_Title VARCHAR(255) PRIMARY KEY,
---    Channel_MostLike_VideoId INT,
---    Channel_MostDislike_VideoId INT
--- );
 
--- CREATE TABLE Category (
---    Category_Id INT PRIMARY KEY AUTO_INCREMENT,
---    Video_Count INT,
---    Category_Name VARCHAR(255),
---    Category_MostLike_VideoId INT
--- );
-
--- CREATE TABLE Tag (
---    Tag_Name VARCHAR(255) PRIMARY KEY,
---    Video_Number INT,
---    Tag_MostLike_VideoId INT,
---    Tag_MostDislike_VideoId INT,
---    Tag_MostPopular_Channel INT
--- );
 
 
 use youtube;
@@ -33,14 +13,14 @@ use youtube;
 -- CREATE TABLE Channels (
 --    Channel_Id VARCHAR(30) PRIMARY KEY,
 --    Channel_Title VARCHAR(255),
---    Channel_MostLike_VideoId INT,
---    Channel_MostDislike_VideoId INT
+--    Channel_MostLike_VideoId VARCHAR(255),
+--    Channel_MostDislike_VideoId VARCHAR(255)
 -- );
 -- CREATE TABLE Category (
 --    Category_Id INT PRIMARY KEY,
 --    Video_Count INT,
 --    Category_Name VARCHAR(255),
---    Category_MostLike_VideoId INT
+--    Category_MostLike_VideoId VARCHAR(255)
 -- );
 -- CREATE TABLE Video(
 -- Video_id VARCHAR(255) PRIMARY KEY,

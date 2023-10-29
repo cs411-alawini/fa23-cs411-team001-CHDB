@@ -1,4 +1,6 @@
 -- Update the Category table with the number of videos in each category and the most liked video in each category
+set foreign_key_checks = 0;
+TRUNCATE TABLE Category;
 INSERT INTO Category (Category_Id, Category_Name) VALUES 
 ('1', 'Film & Animation'),
 ('2', 'Autos & Vehicles'),
@@ -31,15 +33,15 @@ INSERT INTO Category (Category_Id, Category_Name) VALUES
 ('41', 'Thriller'),
 ('42', 'Shorts'),
 ('43', 'Shows');
+SET SQL_SAFE_UPDATES = 0;
 
 UPDATE Category
 SET 
     Video_Count = (
         SELECT COUNT(*)
         FROM Video AS v
-        JOIN Category AS c ON v.Category_Id = c.Category_Id
         WHERE v.Category_Id = Category.Category_Id
-        GROUP BY v.Category_Id
+
     ),
     Category_MostLike_VideoId = (
         SELECT v.Video_id
@@ -48,4 +50,6 @@ SET
         WHERE v.Category_Id = Category.Category_Id
         ORDER BY vi.Likes DESC
         LIMIT 1
-    )
+    );
+    set foreign_key_checks = 1;
+    SET SQL_SAFE_UPDATES = 1;
