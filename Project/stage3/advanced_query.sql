@@ -1,12 +1,6 @@
 USE youtube;
 SET SQL_SAFE_UPDATES = 0;
 
-
-SELECT sum(vi.Views)
-FROM Video as v
-JOIN View as vi on v.Video_id=vi.Video_id
-GROUP BY vi.Nationid;
-
 SELECT t.Nationid, MAX(t.Views) 
 FROM (
     SELECT *
@@ -15,18 +9,21 @@ FROM (
 ) as t 
 GROUP BY Nationid; 
 
+SELECT t.Channel_Id,SUM(View.Likes)
+FROM
 (
-SELECT Nationid,Video_id
-FROM View 
-WHERE Nationid=1 
-ORDER BY Views 
-LIMIT 10
-)
-UNION ALL
-(
-SELECT Nationid,Video_id
-FROM View 
-WHERE Nationid=2
-ORDER BY Views 
-LIMIT 10
-);
+    (
+        SELECT *
+        FROM Video
+        WHERE Title LIKE '%game%'
+    )
+    UNION
+    (
+        SELECT *
+        FROM Video
+        WHERE Title LIKE '%xbox%'
+    )
+) as t 
+INNER JOIN View on t.Video_id=View.Video_id
+GROUP BY t.Channel_Id
+ORDER BY SUM(View.Likes) DESC;
