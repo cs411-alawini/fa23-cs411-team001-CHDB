@@ -37,14 +37,14 @@ CREATE TABLE Category (
    Category_MostLike_VideoId VARCHAR(255)
 );
 CREATE TABLE Video(
-Video_id VARCHAR(255) PRIMARY KEY,
-Title VARCHAR(255),
-Channel_Id VARCHAR(30),
-Category_Id INT,
-Tag_Name VARCHAR(255),
-Publish_time DATE,
-FOREIGN KEY (Channel_Id) REFERENCES Channels(Channel_Id),
-FOREIGN KEY (Category_Id) REFERENCES Category(Category_Id)
+    Video_id VARCHAR(255) PRIMARY KEY,
+    Title VARCHAR(255),
+    Channel_Id VARCHAR(30),
+    Category_Id INT,
+    Tag_Name VARCHAR(255),
+    Publish_time DATE,
+    FOREIGN KEY (Channel_Id) REFERENCES Channels(Channel_Id),
+    FOREIGN KEY (Category_Id) REFERENCES Category(Category_Id)
 );
 CREATE TABLE View(
 	View_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -54,8 +54,8 @@ CREATE TABLE View(
     Dislikes INT,
     Views INT,
     trending_date VARCHAR(50),
-    foreign key (Video_id) references Video(Video_id),
-	foreign key (Nationid) references Nation(Nationid),
-    foreign key (Trending_Date) references Time(Trending_Date)
+    FOREIGN KEY (Video_id) REFERENCES Video(Video_id),
+	FOREIGN KEY (Nationid) REFERENCES Nation(Nationid),
+    FOREIGN KEY (Trending_Date) REFERENCES Time(Trending_Date)
 )
 -- DROP TABLE Tag;
