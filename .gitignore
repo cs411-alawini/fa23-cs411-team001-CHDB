@@ -1,3 +1,4 @@
 *.json
 .idea
 Project/stage4/backend/settings.py
+Project/workshop_tutorial
