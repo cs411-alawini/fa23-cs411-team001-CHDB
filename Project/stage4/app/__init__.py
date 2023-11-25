@@ -4,6 +4,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def homepage():
-    return jsonify(("status", "OK"))
+    return jsonify({"status": "OK"})
 
 
