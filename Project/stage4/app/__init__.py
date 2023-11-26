@@ -9,9 +9,12 @@ app = Flask(__name__)
 
 
 def init_connect_engine():
-    # if os.environ.get("GAE_ENV") == "standard":
-    with open("app.yaml", 'r') as file:
-        variables = yaml.load(file, Loader=yaml.FullLoader)
+    if os.environ.get("GAE_ENV") != "standard":
+        try:
+            variables = yaml.load(open("app.yaml"), Loader=yaml.FullLoader)
+        except OSError:
+            print("Make sure you have the app.yaml file setup")
+            exit()
     env_variables = variables["environment_variables"]
     for var in env_variables:
         os.environ[var] = env_variables[var]
@@ -29,7 +32,7 @@ db = init_connect_engine()
 
 conn = db.connect()
 result = conn.execute("select * from Nation;").fetchall()
-print([x for x in result])
+print(result)
 conn.close()
 
 from . import routes
