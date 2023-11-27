@@ -1,8 +1,21 @@
 from . import app
-from flask import render_template
+from flask import request, jsonify, render_template
 from . import database as db_helper
 
 
 @app.route("/")
 def homepage():
-    return render_template("index.html", name=db_helper.get_name())
+    return jsonify({"status": "OK"})
+
+@app.route('/videos', methods=['GET'])
+def check_videos():
+        items = db_helper.fetch_videos()
+        return jsonify(items)
+# @app.route('/videos/<string: >', methods=['GET'])
+# def insert_video
+#     data = request.get_json()
+#             ret_val = db_helper.insert_new_video(data['Title'], data['Channel_Id'], data['Category_Id'], data['Tag_Name'], data['Publish_time'])
+#             if ret_val:
+#                 return jsonify({"success": True, "response": "Done"})
+#             else:
+#                 return jsonify({"success": False, "response": "Insertion failed"})

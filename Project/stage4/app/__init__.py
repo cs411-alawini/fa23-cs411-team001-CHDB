@@ -1,14 +1,12 @@
 import os
 import sqlalchemy
-from yaml import load, loader
-import yaml
 from flask import Flask
+import yaml
 
-
-app = Flask(__name__)
 
 
 def init_connect_engine():
+    # local test
     if os.environ.get("GAE_ENV") != "standard":
         try:
             variables = yaml.load(open("app.yaml"), Loader=yaml.FullLoader)
@@ -19,22 +17,23 @@ def init_connect_engine():
     for var in env_variables:
         os.environ[var] = env_variables[var]
     pool = sqlalchemy.create_engine(
-            sqlalchemy.engine.url.URL(
-                drivername="mysql+pymysql",
-                username=os.environ.get('MYSQL_USER'),
-                password=os.environ.get('MYSQL_PASSWORD'),
-                database=os.environ.get('MYSQL_DATABASE'),
-                host=os.environ.get('MYSQL_HOST')
-            )
+        sqlalchemy.engine.url.URL(
+            drivername="mysql+pymysql",
+            username=os.environ.get('MYSQL_USER'),
+            password=os.environ.get('MYSQL_PASSWORD'),
+            database=os.environ.get('MYSQL_DATABASE'),
+            host=os.environ.get('MYSQL_HOST')
         )
+    )
     return pool
+
+app = Flask(__name__)
 db = init_connect_engine()
 
-conn = db.connect()
-result = conn.execute("select * from Nation;").fetchall()
-print(result)
-conn.close()
-
+# To prevent from using a blueprint, we use a cyclic import
+# This also means that we need to place this import here
+# pylint: disable=cyclic-import, wrong-import-position
 from . import routes
+
 
 
