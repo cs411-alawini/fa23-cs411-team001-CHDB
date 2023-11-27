@@ -12,7 +12,8 @@ def generate_video_id():
     return hash_code
 def insert_new_video(Title, Channel_Id, Category_Id, Tag_Name, Publish_time) -> bool:
     conn = db.connect()
-    query = 'INSERT INTO Video (Video_id, Title, Channel_Id, Category_Id, Tag_Name, Publish_time) VALUES (%s, %s, %s, %s, %s, %s);'.format(generate_video_id(), Title, Channel_Id, Category_Id, Tag_Name, Publish_time)
+    query = f'INSERT INTO Video (Video_id, Title, Channel_Id, Category_Id, Tag_Name, Publish_time) VALUES ("{generate_video_id()}", "{Title}", "{Channel_Id}", "{Category_Id}", "{Tag_Name}", "{Publish_time}");'
+
     try:
         conn.execute(query)
     except:

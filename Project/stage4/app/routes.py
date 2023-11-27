@@ -11,11 +11,11 @@ def homepage():
 def check_videos():
         items = db_helper.fetch_videos()
         return jsonify(items)
-# @app.route('/videos/<string: >', methods=['GET'])
-# def insert_video
-#     data = request.get_json()
-#             ret_val = db_helper.insert_new_video(data['Title'], data['Channel_Id'], data['Category_Id'], data['Tag_Name'], data['Publish_time'])
-#             if ret_val:
-#                 return jsonify({"success": True, "response": "Done"})
-#             else:
-#                 return jsonify({"success": False, "response": "Insertion failed"})
+@app.route('/videos/insert', methods=['POST'])
+def insert_video():
+    data = request.get_json()
+    ret_val = db_helper.insert_new_video(data['Title'], data['Channel_Id'], data['Category_Id'], data['Tag_Name'], data['Publish_time'])
+    if ret_val:
+        return jsonify({"success": True, "response": "Done"})
+    else:
+        return jsonify({"success": False, "response": "Insertion failed"})
