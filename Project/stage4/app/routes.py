@@ -1,5 +1,5 @@
 from . import app
-from flask import request, jsonify, render_template
+from flask import request, jsonify, make_response
 from . import database as db_helper
 
 
@@ -9,21 +9,24 @@ def homepage():
 
 @app.route('/videos', methods=['GET'])
 def check_videos():
-        items = db_helper.fetch_videos()
-        return jsonify(items)
+        ret_val = db_helper.fetch_videos()
+        return ret_val
 @app.route('/videos/insert', methods=['POST'])
 def insert_video():
     data = request.get_json()
     ret_val = db_helper.insert_new_video(data['Title'], data['Channel_Id'], data['Category_Id'], data['Tag_Name'], data['Publish_time'])
-    if ret_val:
-        return jsonify({"success": True, "response": "Done"})
-    else:
-        return jsonify({"success": False, "response": "Insertion failed"})
+    return ret_val
 
 @app.route('/videos/delete/<string:video_id>', methods=['DELETE'])
 def delete_video(video_id):
     ret_val = db_helper.remove_video_by_id(video_id)
-    if ret_val:
-        return jsonify({"success": True, "response": "Done"})
-    else:
-        return jsonify({"success": False, "response": "Deletion failed"})
+    return ret_val
+@app.route('/videos/update/<string:video_id>', methods=['PUT'])
+def update_video(video_id):
+    data = request.get_json()
+    ret_val = db_helper.update_video_by_id(video_id, data)
+    return ret_val
+@app.route('/videos/<string:video_id>', methods=['GET'])
+def search_video(video_id):
+    ret_val = db_helper.search_video_by_title(video_id)
+    return ret_val
