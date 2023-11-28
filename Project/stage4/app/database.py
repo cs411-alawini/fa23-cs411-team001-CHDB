@@ -1,19 +1,11 @@
 import string
 import random
-
+from . import utils
 from . import db
-def generate_video_id():
-    chars = string.ascii_letters + string.digits
 
-    random_string = ''.join(random.choice(chars) for _ in range(10))
-
-    hash_code = f"_{random_string}"
-
-    return hash_code
 def insert_new_video(Title, Channel_Id, Category_Id, Tag_Name, Publish_time) -> bool:
     conn = db.connect()
     query = f'INSERT INTO Video (Video_id, Title, Channel_Id, Category_Id, Tag_Name, Publish_time) VALUES ("{generate_video_id()}", "{Title}", "{Channel_Id}", "{Category_Id}", "{Tag_Name}", "{Publish_time}");'
-
     try:
         conn.execute(query)
     except:
