@@ -5,7 +5,7 @@ from . import database as db_helper
 
 @app.route("/")
 def homepage():
-    return jsonify({"status": "OK"})
+    return "Homepage"
 
 @app.route('/videos', methods=['GET'])
 def check_videos():
