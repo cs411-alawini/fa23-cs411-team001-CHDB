@@ -19,3 +19,11 @@ def insert_video():
         return jsonify({"success": True, "response": "Done"})
     else:
         return jsonify({"success": False, "response": "Insertion failed"})
+
+@app.route('/videos/delete/<string:video_id>', methods=['DELETE'])
+def delete_video(video_id):
+    ret_val = db_helper.remove_video_by_id(video_id)
+    if ret_val:
+        return jsonify({"success": True, "response": "Done"})
+    else:
+        return jsonify({"success": False, "response": "Deletion failed"})
