@@ -26,7 +26,7 @@ def update_video(video_id):
     data = request.get_json()
     ret_val = db_helper.update_video_by_id(video_id, data)
     return ret_val
-@app.route('/videos/<string:video_id>', methods=['GET'])
-def search_video(video_id):
-    ret_val = db_helper.search_video_by_title(video_id)
+@app.route('/videos/<string:video_title>', methods=['GET'])
+def search_video(video_title):
+    ret_val = db_helper.search_video_by_title(video_title)
     return ret_val
