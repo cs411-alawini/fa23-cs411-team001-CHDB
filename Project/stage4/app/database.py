@@ -93,3 +93,31 @@ def search_video_by_title(Title):
         conn.close()
         return make_response({"success": False, "response": f"{e}"}, 400)
     return make_response(jsonify(ret_res), 200)
+
+
+def video_view(video_id):
+    conn = db.connect()
+    query = (f"SELECT n.NationName, SUM(v.Likes), SUM(v.Dislikes), SUM(v.Views), MAX(v.Trending_date), MAX(total_views.totalview) "
+             f"FROM View v "
+             f"JOIN Nation n ON v.Nationid = n.Nationid "
+             f"JOIN (SELECT SUM(Views) AS totalview FROM View WHERE Video_id = '{video_id}') total_views "
+             f"WHERE v.Video_id = '{video_id}' "
+             f"GROUP BY v.Nationid; ")
+    ret_res = []
+    try:
+        query_results = conn.execute(query)
+        for result in query_results:
+            item = {
+                "NationName": result[0],
+                "Likes": str(result[1]),
+                "Dislikes": str(result[2]),
+                "Nation_Views": str(result[3]),
+                "Trending_date": result[4],
+                "Total_Views": str(result[5])
+            }
+            ret_res.append(item)
+    except Exception as e:
+        conn.close()
+        return make_response({"success": False, "response": f"{e}"}, 400)
+    conn.close()
+    return make_response(jsonify(ret_res), 200)

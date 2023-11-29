@@ -30,3 +30,8 @@ def update_video(video_id):
 def search_video(video_title):
     ret_val = db_helper.search_video_by_title(video_title)
     return ret_val
+@app.route('/videos/<string:video_id>/view', methods=['GET'])
+def check_video_view(video_id):
+    ret_val = db_helper.video_view(video_id)
+    return ret_val
+
