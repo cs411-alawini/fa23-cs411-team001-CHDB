@@ -2,6 +2,7 @@ import os
 import sqlalchemy
 from flask import Flask
 import yaml
+from flask_cors import CORS
 
 
 
@@ -28,6 +29,7 @@ def init_connect_engine():
     return pool
 
 app = Flask(__name__)
+CORS(app)
 db = init_connect_engine()
 
 # To prevent from using a blueprint, we use a cyclic import

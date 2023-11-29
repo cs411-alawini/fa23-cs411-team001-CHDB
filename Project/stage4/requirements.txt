@@ -4,6 +4,7 @@ click==7.1.2
 Django==4.2.7
 djangorestframework==3.14.0
 Flask==1.1.2
+Flask-Cors==4.0.0
 Flask-SQLAlchemy==2.5.1
 greenlet==1.0.0
 importlib-metadata==6.8.0
