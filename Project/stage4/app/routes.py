@@ -34,4 +34,9 @@ def search_video(video_title):
 def check_video_view(video_id):
     ret_val = db_helper.video_view(video_id)
     return ret_val
+#Return top n viewed videos from all nations
+@app.route('/videos/AllNationTopN/<int:n>', methods=['GET'])
+def check_all_nation_topn(n):
+    ret_val = db_helper.allnationtopn(n)
+    return ret_val
 

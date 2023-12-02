@@ -121,3 +121,27 @@ def video_view(video_id):
         return make_response({"success": False, "response": f"{e}"}, 400)
     conn.close()
     return make_response(jsonify(ret_res), 200)
+
+
+def allnationtopn(n):
+    conn = db.connect()
+    procedure_query = f"CALL GetAllNationsTopn({n});"
+    retrieve_query = (f"SELECT a.Title, a.TotalViews, n.NationName "
+                      f"FROM AllNationTopnTable a "
+                      f"JOIN Nation n ON a.Nationid = n.Nationid;")
+    try:
+        conn.execute(procedure_query)
+        query_results = conn.execute(retrieve_query)
+        ret_res = []
+        for result in query_results:
+            item = {
+                "Title": result[0],
+                "TotalViews": str(result[1]),
+                "NationName": result[2]
+            }
+            ret_res.append(item)
+    except Exception as e:
+        conn.close()
+        return make_response({"success": False, "response": f"{e}"}, 400)
+    conn.close()
+    return make_response(jsonify(ret_res), 200)
