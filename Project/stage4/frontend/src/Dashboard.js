@@ -191,7 +191,7 @@ function DataGridDemo({_data,_set_data}) {
     headerName: 'Category Id', 
     width: 50,
     type:"number",
-    editable: true,
+    editable: false,
     headerAlign: 'center',
     align: 'center',
     flex: 1.0,
@@ -199,7 +199,7 @@ function DataGridDemo({_data,_set_data}) {
   { field: 'Channel_Id', 
     headerName: 'Channel Id', 
     width: 50,
-    editable: true,
+    editable: false,
     headerAlign: 'center',
     align: 'center',
     flex: 1.0,
@@ -361,6 +361,7 @@ function Component_Form(){
       console.log(response.data)
       set_video_table_content(response.data)
     }).catch((e)=>{
+      set_video_table_content([])
       console.log(e)
     })
   }
