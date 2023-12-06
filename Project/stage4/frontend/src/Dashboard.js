@@ -468,7 +468,7 @@ function My_window({window_input}){
             onChange={(e) => {
               var value = parseInt(e.target.value);
               if(value > 15) value = 15;
-              if(value < 2) value = 2;
+              if(value < 1) value = 2;
               set_num_video(value)}}
             type="number"
             InputLabelProps={{
